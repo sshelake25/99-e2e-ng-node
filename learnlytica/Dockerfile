@@ -21,7 +21,7 @@ FROM node
 
 WORKDIR /thbs-app
 
-COPY package.json ./
+COPY . .
 
 RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
 
