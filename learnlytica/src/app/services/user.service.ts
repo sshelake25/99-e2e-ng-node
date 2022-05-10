@@ -6,8 +6,9 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = environment.production ? environment.baseUrl : '/api/';
-
+  // baseUrl = environment.production ? environment.baseUrl : '/api/';
+  baseUrl = '/api/';
+  
   constructor(private myHttp: HttpClient) { } //get /post
 
   getUserList() { // Observable // String
