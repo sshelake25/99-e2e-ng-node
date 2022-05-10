@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  baseUrl = environment.production ? environment.baseUrl : '/api/';
 
   constructor(private myHttp: HttpClient) { } //get /post
 
@@ -19,12 +21,12 @@ export class UserService {
   }
 
   getProfiles() {
-    return this.myHttp.get('http://localhost:4200/api/users') //obs
+    return this.myHttp.get(`${this.baseUrl}users`) //obs
   }
 
   submitContactDetails(data: any) {
 
-    return this.myHttp.post('http://localhost:4200/api/users/contact', data);
+    return this.myHttp.post(`${this.baseUrl}contact`, data);
   }
 
 
