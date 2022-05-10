@@ -38,7 +38,7 @@ services:
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - "8090:4200"
+      - "8080:4200"
     # environment:
     #   - DB_HOST=mysqldb
     #   - DB_USER=$MYSQLDB_USER
