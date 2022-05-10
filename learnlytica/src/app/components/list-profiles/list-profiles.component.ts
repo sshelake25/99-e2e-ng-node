@@ -40,31 +40,31 @@ export class ListProfilesComponent implements OnInit {
   constructor(private myUserSrv: UserService) { } //inject into contructor
 
   ngOnInit(): void {
-    this.userTitle = this.myUserSrv.getUserList(); // string 
-    this.myUserSrv.getUserListFromApi()
-      .pipe(
-        //Once done let me know, or if issue please speak up
-        //rxjs operator -> going hold data
-        tap((userList: any) => { //array of object
-          return userList.map(
-            (element: any, index: number, arr: any) => { // loop over array 
-              //object
-              element['title'] = 'thbs ' + index ;
-              element['name'] = "Mr. " + element['name'];
-              return element;  // return modifed object
-            })
-        })
-      )
-      .subscribe(
-        (myUser) => {
-          console.log(myUser)
-          this.userFromApi = myUser
-        }
-      );
+    //this.userTitle = this.myUserSrv.getUserList(); // string 
+    // this.myUserSrv.getUserListFromApi()
+    //   .pipe(
+    //     //Once done let me know, or if issue please speak up
+    //     //rxjs operator -> going hold data
+    //     tap((userList: any) => { //array of object
+    //       return userList.map(
+    //         (element: any, index: number, arr: any) => { // loop over array 
+    //           //object
+    //           element['title'] = 'thbs ' + index ;
+    //           element['name'] = "Mr. " + element['name'];
+    //           return element;  // return modifed object
+    //         })
+    //     })
+    //   )
+    //   .subscribe(
+    //     (myUser) => {
+    //       console.log(myUser)
+    //       this.userFromApi = myUser
+    //     }
+    //   );
 
     //this.userFromApi.subscribe();
 
-    console.log(this.userFromApi)
+  //  console.log(this.userFromApi)
 
   }
 
