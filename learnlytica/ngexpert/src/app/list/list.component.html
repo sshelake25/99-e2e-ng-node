@@ -1,0 +1,33 @@
+<p>list works!</p>
+<app-if></app-if>
+
+<app-switch></app-switch>
+
+<div class="row">
+    <h2>This just loop over array</h2>
+    <div *ngFor="let myelm of [1,2]" class="card col m-3">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title {{myelm}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <h2>This loop over array of object</h2>
+    <div *ngFor="let myelm of itemList"  class="card col m-3">
+        <span *ngIf="myelm.title === 'Orages'">IIIII Am SPPPAN</span>
+        <!-- {{myelm | json}}
+        <br>
+        <b> {{myelm.btnText}}</b> -->
+        <img width="200" height="300" src="{{myelm.imageLink}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title {{myelm.title}}</h5>
+            <p class="card-text">{{myelm.cantent}}</p>
+            <a target="_blank" href="{{myelm.link}}" class="btn btn-primary">{{myelm.btnText}}</a>
+        </div>
+    </div>
+</div>

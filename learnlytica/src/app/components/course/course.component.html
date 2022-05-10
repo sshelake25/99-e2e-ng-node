@@ -1,0 +1,17 @@
+<!-- <p>course works!</p> -->
+
+<!-- {{configs | json}} -->
+
+<div class="card">
+    <img [src]="imgUrl" class="card-img-top" alt="...">
+    <div class="card-body">
+
+        <h5 class="card-title">{{configs['spayee:title'] | uppercase}} - MRP <span>{{configs['spayee:mrp'] }}</span>
+        </h5>
+
+        <span><b>Course date: </b> {{currentDate | date: 'MMM/dd/y h:mm:ss a' | uppercase}}</span>
+        <p class="card-text">make up the bulk of the card's
+            content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>

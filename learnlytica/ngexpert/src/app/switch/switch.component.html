@@ -1,0 +1,34 @@
+<ul>
+    <h2>I am *ngSwitch Case</h2>
+    <li *ngFor="let item of person" [ngSwitch]="item.country">
+        <!-- {{item | json}} -->
+        <div *ngSwitchCase="'IND'" class="text-primary"> I am in india</div>
+
+        <div *ngSwitchCase="'UK'" class="text-info"> I am in UK</div>
+
+        <div *ngSwitchCase="'USA'" class="text-danger"> I am in USA</div>
+
+        <div *ngSwitchDefault class="text-success"> I am not part of any country</div>
+
+    </li>
+</ul>
+
+<ul>
+    <h2>I am ngStyle with switch case in .ts file</h2>
+    <li *ngFor="let item of person" [ngSwitch]="item.country">
+        <div [ngStyle]="{'color': getColors(item.country)}"> my Name is {{item.name}} and I am from {{item.country}}
+        </div>
+    </li>
+</ul>
+
+
+<ul>
+    <h2>I am ngClass dynamics</h2>
+    <li *ngFor="let item of person">
+        <div [ngClass]="{
+            'text-primary': item.country === 'IND',
+            'text-danger': item.country === 'USA'
+        }"> my Name is {{item.name}} and I am from {{item.country}}
+        </div>
+    </li>
+</ul>

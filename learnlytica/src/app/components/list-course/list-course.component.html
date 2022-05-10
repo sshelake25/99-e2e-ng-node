@@ -1,0 +1,47 @@
+<!-- <pre>{{cList.sub-home | json}}</pre> -->
+
+<br>
+<h1>{{ myTitle | title:'react js'}}</h1>
+
+<br>
+Previous 
+<div *ngFor="let user of userList">
+    {{user | json}}
+</div>
+
+After Async Usage
+<div *ngFor="let user of myUserList$ | async; index as i">
+    <h2>{{user.username}} - {{user.email}}</h2>
+</div>
+
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="First">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date">
+                <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+    </mat-tab>
+    <mat-tab label="Second">Content 2</mat-tab>
+    <mat-tab label="Third">Content 3</mat-tab>
+</mat-tab-group>
+
+<br>
+<div class="row">
+    <div class="col" *ngFor="let course of cList?.['sub-home'].data">
+        <!-- {{course._id | json}} -->
+
+        <!-- <app-course  [configs]="course">
+        </app-course> -->
+
+        <app-course [imgid]="course._id" [configs]="course['spayee:resource']">
+        </app-course>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="border border-info m-2 p-3">
+    <h2>Contact US</h2>
+    {{myform.value | json}}
+    <!-- <br>
+    <br>
+    <pre>Dirty? {{ myform.controls['fname'].dirty }}</pre>
+    <pre>pristine? {{ myform.controls['fname'].pristine }}</pre>
+    <pre>touched? {{ myform.controls['fname'].touched }}</pre>
+    <pre>untouched? {{ myform.controls['fname'].untouched }}</pre>
+    <pre>valid? {{ myform.controls['fname'].valid }}</pre>
+    <pre>invalid? {{ myform.controls['fname'].invalid }}</pre> -->
+
+    <form novalidate [formGroup]="myform">
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input required placeholder="Please enter your first name" formControlName="fname" type="text"
+                class="form-control">
+            <div *ngIf="myform.controls['fname'].touched 
+                        && myform.controls['fname'].invalid" class="text-danger">
+                <b>* First Name is required field</b>
+            </div>
+
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input formControlName="lname" type="text" class="form-control">
+                <div *ngIf="myform.controls['lname'].touched 
+                && myform.controls['lname'].invalid" class="text-danger">
+                    <b>* Last Name is required field</b>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input formControlName="email_thbs" type="email" class="form-control">
+
+            <div class="text-danger" *ngIf="myform.controls['email_thbs'].touched 
+                       && myform.controls['email_thbs'].invalid">
+                <p *ngIf="myform.controls['email_thbs'].errors?.['required']">Email is required</p>
+                <p *ngIf="myform.controls['email_thbs'].errors?.['email']">Please enter valid email</p>
+                <p *ngIf="myform.controls['email_thbs'].errors?.['minlength']">Email min length should 4 char</p>
+
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input formControlName="password" type="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Language</label>
+            <select formControlName="lang" class="form-control">
+                <option value="">Please select a language</option>
+                <option [value]="mylang" *ngFor="let mylang of langs">{{mylang}}</option>
+            </select>
+        </div>
+
+        <div class="form-group m-2">
+            <!-- [disabled]="myform.invalid" -->
+            <button class="btn btn-primary" (click)="getValues()">Submit</button>
+        </div>
+    </form>
+
+</div>
