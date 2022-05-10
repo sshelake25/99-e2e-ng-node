@@ -31,22 +31,22 @@ services:
     stdin_open: true
     tty: true
 
-  # angular_app:
-  #   depends_on:
-  #     - node_app
-  #   build: .
-  #   restart: unless-stopped
-  #   env_file: ./.env
-  #   ports:
-  #     - $ANGULAR_LOCAL_PORT:$ANGULAR_DOCKER_PORT
-  #   # environment:
-  #   #   - DB_HOST=mysqldb
-  #   #   - DB_USER=$MYSQLDB_USER
-  #   #   - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-  #   #   - DB_NAME=$MYSQLDB_DATABASE
-  #   #   - DB_PORT=$MYSQLDB_DOCKER_PORT
-  #   stdin_open: true
-  #   tty: true
+  angular_app:
+    depends_on:
+      - node_app
+    build: ./learnlytica
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - 8090:80
+    # environment:
+    #   - DB_HOST=mysqldb
+    #   - DB_USER=$MYSQLDB_USER
+    #   - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+    #   - DB_NAME=$MYSQLDB_DATABASE
+    #   - DB_PORT=$MYSQLDB_DOCKER_PORT
+    stdin_open: true
+    tty: true
 
 volumes: 
   db:
