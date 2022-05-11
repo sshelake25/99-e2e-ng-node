@@ -32,13 +32,13 @@ services:
     tty: true
 
   angular_app:
-    depends_on:
-      - node_app
+    # depends_on:
+    #   - node_app
     build: ./learnlytica
     restart: unless-stopped
-    env_file: ./.env
+    # env_file: ./.env
     ports:
-      - "8080:4200"
+      - "4200:4200"
     # environment:
     #   - DB_HOST=mysqldb
     #   - DB_USER=$MYSQLDB_USER
