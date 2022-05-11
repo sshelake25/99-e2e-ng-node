@@ -12,6 +12,7 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
+
   node_app:
     depends_on:
       - mysqldb
@@ -29,7 +30,6 @@ services:
       - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
-    
  # docker-compose up  #forebgroud 
  #  docker-compose up -d #backgroud/detached mode
   angular_app:
