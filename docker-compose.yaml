@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   mysqldb:
     image: mysql:5.7
@@ -13,7 +12,6 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-
   node_app:
     depends_on:
       - mysqldb
@@ -31,24 +29,18 @@ services:
       - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
-
+    
+ # docker-compose up  #forebgroud 
+ #  docker-compose up -d #backgroud/detached mode
   angular_app:
     depends_on:
       - node_app
-    build: ./learnlytica
+    build: ./learnlytica #build image and then start container from img
     container_name: angular_app
     restart: unless-stopped
-    env_file: ./.env
     ports:
       - 9090:4200
-    # environment:
-    #   - DB_HOST=mysqldb
-    #   - DB_USER=$MYSQLDB_USER
-    #   - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-    #   - DB_NAME=$MYSQLDB_DATABASE
-    #   - DB_PORT=$MYSQLDB_DOCKER_PORT
-    stdin_open: true
+    stdin_open: true #show up logs from container trobleshooting
     tty: true
-
 volumes: 
   db:

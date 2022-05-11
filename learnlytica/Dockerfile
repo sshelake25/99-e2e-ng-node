@@ -1,30 +1,15 @@
-# FROM node as build-step
-# WORKDIR /thbs-app
-# COPY . .
-# RUN npm install
-# # generate bowser compitable
-# RUN npm run build 
-
-# #stage 2
-# FROM nginx:alpine
-# COPY --from=build-step /thbs-app/dist/* /usr/share/nginx/html
-#### ABAOVE STEP FOR PROD BUILD
-
-
-# docker build
-# docker build -t ngexpress .
-# docker run -d -p 9090:80 ngexpress
-# http://localhost:9090 --
-# http://127.0.0.1:9090
-
-FROM node
-
+# Devlopment phase docker file
+# base image
+FROM node  
+# setting working dir so that any command run will 
+# in set directory -- /thbs-app -->npm run start
 WORKDIR /thbs-app
-
+# first . #Copy all the code of where docker file is #learnlytica folder
+# second .#Where to copy inside container in workdir
 COPY . .
-
-RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
-
+# Install all npm package and angular cli
+RUN npm install -g @angular/cli && npm install
+# going to run 4200
 EXPOSE 4200
-
+# start dev build -- on any host->
 CMD ["ng","serve","--host", "0.0.0.0"]
