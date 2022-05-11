@@ -33,12 +33,12 @@ services:
     tty: true
 
   angular_app:
-    # depends_on:
-    #   - node_app
+    depends_on:
+      - node_app
     build: ./learnlytica
     container_name: angular_app
-    # restart: unless-stopped
-    # env_file: ./.env
+    restart: unless-stopped
+    env_file: ./.env
     ports:
       - 9090:4200
     # environment:
@@ -47,8 +47,8 @@ services:
     #   - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
     #   - DB_NAME=$MYSQLDB_DATABASE
     #   - DB_PORT=$MYSQLDB_DOCKER_PORT
-    # stdin_open: true
-    # tty: true
+    stdin_open: true
+    tty: true
 
 volumes: 
   db:
