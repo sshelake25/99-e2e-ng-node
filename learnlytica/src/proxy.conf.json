@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "http://node_app:3000",
+        "target": "http://node_app:3000", 
         "secure": false
     }
 }
