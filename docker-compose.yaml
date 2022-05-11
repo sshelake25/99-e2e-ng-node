@@ -35,6 +35,7 @@ services:
     # depends_on:
     #   - node_app
     build: ./learnlytica
+    container_name: angular_app
     restart: unless-stopped
     # env_file: ./.env
     ports:
