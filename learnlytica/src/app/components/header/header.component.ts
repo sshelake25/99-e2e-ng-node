@@ -12,9 +12,18 @@ import { filter } from 'rxjs/operators'
 })
 export class HeaderComponent implements OnInit {
   isAboutUs = false;
+  loggedIn: any;
+
+
+
   constructor(
     private myDialog: MatDialog,
-    private router: Router) { }
+    private router: Router) {
+
+
+    this.loggedIn = JSON.parse(sessionStorage.getItem('loggedUser') || 'null');
+
+  }
 
   ngOnInit(): void {
     this.router.events
@@ -39,6 +48,11 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  logout() {
+    sessionStorage.clear();
+    window.location.reload();
   }
 
 }

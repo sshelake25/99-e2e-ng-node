@@ -14,7 +14,7 @@ export class UserLoginComponent implements OnInit {
   submitted = false;
   returnUrl?: string;
 
-  userMessage: string =  '';
+  userMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -60,6 +60,7 @@ export class UserLoginComponent implements OnInit {
             this.loading = false;
 
             if (data.length) {
+              sessionStorage.setItem('loggedUser', JSON.stringify(data[0]));
               this.router.navigate(['/course']);
             } else {
               this.userMessage = 'Login user not found, please enter correct username and password';
