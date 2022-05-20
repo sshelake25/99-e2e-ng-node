@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.prod';
 export class UserService {
   // baseUrl = environment.production ? environment.baseUrl : '/api/';
   baseUrl = '/api/';
-  
+
   constructor(private myHttp: HttpClient) { } //get /post
 
   getUserList() { // Observable // String
@@ -39,6 +39,11 @@ export class UserService {
     };
 
     return this.myHttp.post('api/users/login-user', loginData);
+  }
+
+
+  deleteUser(userid:any) {
+    return this.myHttp.delete(`api/users/delete-user/${userid}`);
   }
 
 }

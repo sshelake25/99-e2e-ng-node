@@ -6,12 +6,13 @@
 <br>
 Previous 
 <div *ngFor="let user of userList">
-    {{user | json}}
+    {{user | json}} 
 </div>
 
 After Async Usage
 <div *ngFor="let user of myUserList$ | async; index as i">
     <h2>{{user.username}} - {{user.email}}</h2>
+    <button (click)="deleteUser(user.username)">Delete User</button>
 </div>
 
 <mat-tab-group mat-align-tabs="start">

@@ -15,6 +15,11 @@ router.get('/', function (req, res, next) {
 });
 
 
+router.delete('/:uname', function (req, res) {
+
+});
+
+
 //inset user profile
 
 router.post('/create-user', function (req, res, next) {
@@ -68,7 +73,7 @@ router.post('/login-user', (req, res, next) => {
         res.json(result)
       } else {
         // res.send(`{message: 'user no found', usercount: 0}`);
-        res.json({message: 'user no found', usercount: 0})
+        res.json({ message: 'user no found', usercount: 0 })
       }
     }
 
@@ -81,8 +86,9 @@ router.post('/login-user', (req, res, next) => {
 
 //delete user //CRUD
 router.delete('/delete-user/:userId', (req, res, next) => {
+  console.log(req.params.userId)
   let userId = req.params.userId;
-  let deleletq = `DELETE FROM user_profile WHERE id = '${userId}'`;
+  let deleletq = `DELETE FROM user_profile WHERE username = '${userId}'`;
 
   dbConnection.query(deleletq, (error, result, fields) => {
     if (error) {

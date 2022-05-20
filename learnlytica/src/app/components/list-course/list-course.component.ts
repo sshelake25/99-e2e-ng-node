@@ -33,4 +33,8 @@ export class ListCourseComponent implements OnInit {
 
   }
 
+  deleteUser(id: any) {
+    this.myUserSrv.deleteUser(id).subscribe();
+  }
+
 }
